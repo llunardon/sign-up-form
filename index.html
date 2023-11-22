@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sign-up form</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Blinker"
+    />
+
+    <script>
+      function checkPasswordConfirmation() {
+        form = document.getElementById("form-id");
+        password1 = form.password.value;
+        password2 = form.confirmPassword.value;
+
+        if (password1 != password2) {
+          document.getElementById("confirm-password").style.backgroundColor =
+            "salmon";
+          document.getElementById("confirm-password").style.color = "#1a1a1a";
+        } else {
+          document.getElementById("confirm-password").style.backgroundColor =
+            "#1a1a1a";
+          document.getElementById("confirm-password").style.color =
+            "rgb(66, 219, 61)";
+        }
+      }
+
+      function checkPassword(form) {
+        password1 = form.password.value;
+        password2 = form.confirmPassword.value;
+
+        if (password1 != password2) {
+          form.confirmPassword.value = "";
+          document.getElementById("confirm-password").style.backgroundColor =
+            "salmon";
+          document.getElementById("confirm-password").style.color = "#292929";
+          document.getElementById("confirm-password").placeholder =
+            "passwords did not match";
+          return false;
+        }
+
+        return true;
+      }
+
+      function passwordGuide() {
+        pwd = document.getElementById("password");
+        const tempDiv = document.createElement("div");
+        tempDiv.style.width = "20rem";
+        tempDiv.classList.add("password-guide");
+        pwd.insertAdjacentElement("afterend", tempDiv);
+        tempDiv.innerHTML =
+          "1 lowercase, 1 uppercase, 1 number and at least 8 characters";
+      }
+
+      function removePasswordGuide() {
+        guide = document.getElementsByClassName("password-guide");
+        while (guide.length > 0) guide[0].remove();
+      }
+    </script>
+  </head>
+  <body>
+    <div class="split left">
+      <img
+        src="images/pexels-joão-jesus-925743.jpg"
+        alt="generic as hell landscape"
+      />
+      <div class="img-text">
+        Generic Imaginary Company
+        <div class="img-subtitle">... I ran out of ideas for a caption</div>
+      </div>
+    </div>
+
+    <div class="split right">
+      <div class="sign-container">
+        <div id="sign-title">Sign Up</div>
+
+        <div>
+          <form
+            id="form-id"
+            action="example.com/path"
+            method="post"
+            onSubmit="return checkPassword(this)"
+          >
+            <!-- first name -->
+            <div>
+              <label for="first_name">first name</label>
+              <input
+                type="text"
+                id="first_name"
+                placeholder="first name (3-20 characters)"
+                minlength="3"
+                maxlength="20"
+                required
+              />
+            </div>
+
+            <!-- last name -->
+            <div>
+              <label for="last_name">last name</label>
+              <input
+                type="text"
+                id="last_name"
+                placeholder="last name (3-20 characters)"
+                minlength="3"
+                maxlength="20"
+                required
+              />
+            </div>
+
+            <!-- email -->
+            <div>
+              <label for="user_email">email</label>
+              <input
+                type="email"
+                id="user_email"
+                name="email"
+                placeholder="email"
+                required
+              />
+            </div>
+
+            <!-- phone number -->
+            <div>
+              <label for="phone">phone number</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                placeholder="phone number [123-456-7890]"
+                pattern="[0-9]{3}[\-][0-9]{3}[\-][0-9]{4}|[0-9]{10}"
+                required
+              />
+            </div>
+
+            <!-- password -->
+            <div>
+              <label for="password">password</label>
+              <input
+                onmouseover="passwordGuide()"
+                onmouseout="removePasswordGuide()"
+                oninput="checkPasswordConfirmation()"
+                type="password"
+                id="password"
+                name="password"
+                placeholder="password"
+                title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                required
+              />
+            </div>
+
+            <!-- confirm password -->
+            <div>
+              <label for="confirm-password">confirm password</label>
+              <input
+                oninput="checkPasswordConfirmation()"
+                type="password"
+                id="confirm-password"
+                name="confirmPassword"
+                placeholder="confirm password"
+                required
+              />
+            </div>
+
+            <!-- submit button -->
+            <div>
+              <input id="submit-button" type="submit" value="sign up" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
