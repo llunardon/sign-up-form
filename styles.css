@@ -43,8 +43,6 @@
 }
 
 .img-subtitle {
-  height: min(55px, 30%);
-
   padding: 1rem;
   margin-top: 2rem;
   margin-left: 20%;
@@ -96,7 +94,6 @@
 label {
   color: rgba(0, 0, 0, 0);
   height: 0px;
-  /* align-self: flex-start; */
 }
 
 #sign-title {
@@ -135,8 +132,6 @@ input {
 input:focus {
   color: #141414;
   border: 1px solid #1a1a1a;
-  /* border-bottom: 1px solid rgb(122, 179, 160);
-  border-left: 1px solid rgb(122, 179, 160); */
   outline: none;
   background: rgb(195, 230, 218);
   background: linear-gradient(
@@ -157,7 +152,6 @@ input:not(:placeholder-shown):valid {
   color: rgb(66, 219, 61);
 }
 
-/* input[type="submit"] { */
 #submit-button {
   margin-top: 1rem;
   width: auto;
@@ -192,4 +186,18 @@ form:invalid button {
   border-radius: 2%;
   padding: 0.3rem;
   color: #292929;
+}
+
+@media only screen and (max-width: 800px) {
+    .img-subtitle {
+        display: none;
+    }
+
+    .right {
+      width: 100%;
+    }
+
+    .left {
+      width: 0;
+    }
 }
