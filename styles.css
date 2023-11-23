@@ -21,8 +21,9 @@
   overflow: hidden;
 }
 
-.left > img {
-  flex-shrink: 1;
+/* .left > img { */
+img {
+  flex-shrink: 0.8;
   min-width: 100%;
   min-height: 100%;
 }
@@ -39,10 +40,16 @@
 
   font-family: "Blinker", sans-serif;
   font-size: xxx-large;
+  padding-top: 1rem;
+  padding-left: 1rem;
+
+  background-color: #d4d4d4;
   color: #1a1a1a;
 }
 
 .img-subtitle {
+  height: 30%;
+
   padding: 1rem;
   margin-top: 2rem;
   margin-left: 20%;
